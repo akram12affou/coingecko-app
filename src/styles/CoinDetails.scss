@@ -1,0 +1,151 @@
+.coin-details-container{
+    background: #26272b;
+    color: #f4f4f4;
+    min-height: calc(100vh - 50px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+   
+    .coin-name{
+        margin-top: 15px;
+        flex-direction: column;
+        background-color: #26272b;
+        box-shadow: 0px 0px 12px #18191b;
+        width:90vw;
+        max-width: 750px;
+        text-align: center;
+        padding: 20px;
+        border-radius: 8px;
+        font-size: 1.5rem;
+        font-weight: bolder;
+        letter-spacing: 1px;
+
+    }
+    .coin-rank-price-container{
+       
+        margin-top: 15px;
+        background-color: #26272b;
+        box-shadow: 0px 0px 12px #18191b;
+        width: 90vw;
+        max-width: 750px;
+        padding: 20px;
+       
+        border-radius: 8px;
+        .coin-rank-price{
+            display: flex;
+            align-items: center;
+            margin-top: 10px;
+            display: flex;
+            
+           
+        }
+        .rank{
+            border: 1px solid #6900ff;
+    box-shadow: 0px 0px 8px #6900ff;
+    background-color: #6900ff;
+    border-radius: 8px;
+    padding: .2rem;
+    width: fit-content;
+        }
+        .coin-name-under{
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            img{
+                width: 40px;
+            }
+        }
+        .coin-price{
+            font-size: 2rem;
+            font-weight: bolder;
+            margin-left: 50%;
+        }
+    }
+    .variation-container{
+        margin-top: 15px;
+        flex-direction: column;
+        background-color: #26272b;
+        box-shadow: 0px 0px 12px #18191b;
+        width: 90vw;
+        max-width: 750px;
+        text-align: center;
+        padding: 20px;
+        border-radius: 8px;
+        font-size: 1.5rem;
+        font-weight: bolder;
+        letter-spacing: 1px;
+        
+        .variation-container-time{
+            display: flex;
+            justify-content: space-between;
+           
+            gap: 3px;
+            div{
+                background-color: #333;
+                width: 20%;
+                font-size: 1rem;
+                font-weight: bolder;
+                padding: 5px;
+            }
+        }
+        .variation-container-values{
+            display: flex;
+            justify-content: space-between;
+           
+            gap: 3px;
+            div{
+                
+                width: 20%;
+                font-size: 1rem;
+                font-weight: bolder;
+                padding: 5px;
+            }
+        }
+    }
+    .more-info{
+        margin-top: 15px;
+        background-color: #26272b;
+        box-shadow: 0px 0px 12px #18191b;
+        width: 90vw;
+        max-width: 750px;
+        padding: 20px;
+        border-radius: 8px;
+        font-size: 1rem;
+        font-weight: bolder;
+        letter-spacing: 1px;
+        display: flex;
+        justify-content: space-evenly;
+      
+        div{
+            font-size: 0.9rem;
+            font-weight: bolder;
+            padding: 5px;
+        }
+    }
+    .about-container{
+        margin-top: 15px;
+        flex-direction: column;
+        background-color: #26272b;
+        box-shadow: 0px 0px 12px #18191b;
+        width: 90vw;
+        max-width: 750px;
+        
+        padding: 20px;
+        border-radius: 8px;
+        font-size: 1.5rem;
+        font-weight: bolder;
+        letter-spacing: 1px;
+        .text{
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            font-weight: normal;
+        }
+    }
+    @media only screen and (max-width: 600px) {
+        .more-info {
+            flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        }
+      }
+}

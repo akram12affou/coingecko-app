@@ -5,6 +5,10 @@
     font-family: 'Poppins', sans-serif;
     box-sizing: border-box;
 }
+body{
+    min-width: 100vw;
+    overflow-x: hidden;
+}
 header{
     background: #26272b;
     color: #f4f4f4;
@@ -18,6 +22,7 @@ header{
         align-items: center;
     }
     .brandname{
+        cursor: pointer;
      letter-spacing: 2px;
      transform: scaleY(0.9);
      font-weight: bolder;

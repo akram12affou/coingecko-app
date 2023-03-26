@@ -1,5 +1,6 @@
 const thestate = {
-    coins : []
+    coins : [],
+    coinDetails : []
 }
 
 export default (state = thestate, { type, payload }) => {
@@ -7,7 +8,8 @@ export default (state = thestate, { type, payload }) => {
 
   case 'FetchCoins':
     return { ...state, coins:payload }
-
+  case 'fetchCoinDetails':
+  return { ...state, coinDetails:payload }
   default:
     return state
   }

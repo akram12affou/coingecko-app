@@ -6,3 +6,11 @@ export const fetchCoins = (data: []) => {
         }
     )
 }
+export const fetchCoinDetails = (data: []) => {
+    return(
+        {
+            type : 'fetchCoinDetails',
+            payload : data
+        }
+    )
+}
