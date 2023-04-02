@@ -10,6 +10,11 @@ body{
     overflow-x: hidden;
 }
 header{
+    .buttons{
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+    }
     background: #26272b;
     color: #f4f4f4;
     display: flex;

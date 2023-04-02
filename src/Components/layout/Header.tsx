@@ -11,8 +11,9 @@ const Header : FC = () => {
         APEX
       </h2>
       </div>
-      <div>
-        <button>Coins</button>
+      <div className='buttons'>
+        <button onClick={() => navigate('/')}>Coins</button>
+        <button onClick={() => navigate('/favoritecoins')} >Favorites</button>
       </div>
       </div>
     </header>

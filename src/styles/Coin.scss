@@ -20,4 +20,10 @@
     &:hover{
         transform: scale(1.05);
     }
+    
+    @media only screen and (max-width: 600px) {
+        .none-res{
+        display: none;
+    }
+      }
 }

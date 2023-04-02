@@ -1,6 +1,7 @@
 import { FC } from "react";
 import {useNavigate} from 'react-router-dom' 
 import '../styles/Coin.scss'
+import LineChart from '../Components/LineChart'
 const Coin: FC<{ coin: []; i: number }> = ({ coin, i }) => {
   const navigate = useNavigate()
   const {
@@ -11,8 +12,8 @@ const Coin: FC<{ coin: []; i: number }> = ({ coin, i }) => {
     total_volume,
     current_price,
     price_change_percentage_24h,
+    sparkline_in_7d
   } = coin;
-
   return (
     <div key={id} className='coin-container' onClick={() => navigate(`/coinDetails/${id}`)}>
       <div>{i + 1}</div>
@@ -26,9 +27,10 @@ const Coin: FC<{ coin: []; i: number }> = ({ coin, i }) => {
       <div>
         <span>{price_change_percentage_24h.toFixed(2)}%</span>
       </div>
-      <div>${total_volume}</div>
-      <div>${market_cap}</div>
- 
+      <div className='none-res' >${total_volume}</div>
+      <div className='none-res' >${market_cap}</div>
+      <div  > <LineChart spark={sparkline_in_7d.price} /> </div>
+      {/* <div>{JSON.stringify(sparkline_in_7d)}</div> */}
     </div>
   );
 };

@@ -5,7 +5,11 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-   
+    .loading-spiner-container{
+        min-height: calc(100vh - 50px);
+        display: flex;
+        align-items: center;
+    }
     .coin-name{
         margin-top: 15px;
         flex-direction: column;
@@ -33,6 +37,7 @@
         border-radius: 8px;
         .coin-rank-price{
             display: flex;
+            justify-content: center;
             align-items: center;
             margin-top: 10px;
             display: flex;
@@ -58,7 +63,7 @@
         .coin-price{
             font-size: 2rem;
             font-weight: bolder;
-            margin-left: 50%;
+            margin-left: 30vw;
         }
     }
     .variation-container{
@@ -71,7 +76,7 @@
         text-align: center;
         padding: 20px;
         border-radius: 8px;
-        font-size: 1.5rem;
+        font-size: 1rem;
         font-weight: bolder;
         letter-spacing: 1px;
         
@@ -83,7 +88,7 @@
             div{
                 background-color: #333;
                 width: 20%;
-                font-size: 1rem;
+                font-size: 0.8rem;
                 font-weight: bolder;
                 padding: 5px;
             }
@@ -96,7 +101,7 @@
             div{
                 
                 width: 20%;
-                font-size: 1rem;
+                font-size: 0.8rem;
                 font-weight: bolder;
                 padding: 5px;
             }
@@ -141,11 +146,26 @@
             font-weight: normal;
         }
     }
+    .text a{
+        color: cyan;
+        text-decoration: none;
+        &:hover{
+            text-decoration: underline;
+        }
+    }
     @media only screen and (max-width: 600px) {
         .more-info {
             flex-direction: column;
         justify-content: center;
         align-items: center;
         }
+        .coin-rank-price-container{
+ .coin-price{
+            font-size: 1.5rem;
+            font-weight: bolder;
+            margin-left: 10vw;
+        }
+        }
+       
       }
 }
