@@ -1,28 +1,37 @@
 import React from 'react'
-import { Line } from 'react-chartjs-2'
-import {Chart as ChartJS} from 'chart.js/auto'
-function LineChart({spark}) {
-console.log(spark)
+import { Chart }  from 'react-chartjs-2'
+import 'chart.js/auto';
+function ChartLine({spark}) {
+
   const data = {
     type: 'line',
-    labels:Array(40).fill(' '),
+    labels:Array(10).fill(' '),
     datasets: [{
-      axis: 'x',
-      label: 'Coin in last 7 days',
-      data: spark.slice(0,40),
+      scaleShowLabels : false,
+      label: '',
+      data:  spark.slice(0,10),
       fill: false,
-      borderColor: '#226b6f',
-      tension: 0.3
-    }]
+      borderColor: spark[10] > spark[0]  ? '#05ff00' : '#ff0000',
+      tension: 0.4,
+      borderDashOffset: false,
+   
+    }],
+    options: {
+      scales: {
+          y: {
+            beginAtZero : true,
+              ticks: {
+                  display: false
+              }
+          }
+      }
+  }
   };
   return (
     <>
-    <Line data={data} />
-    
+    <Chart  type='line' data={data} />
     </>
- 
-
   )
 }
 
-export default LineChart
+export default ChartLine

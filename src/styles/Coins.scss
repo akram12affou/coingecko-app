@@ -6,12 +6,31 @@
    align-items: center;
    flex-direction: column;
    gap:15px;
-   
+   .input-container{
+    margin-top: 15px;
+    display: flex;
+    align-items: center;  
+    color: aliceblue;
+    gap: 5px;
+  }
+   input{
+    padding: 5px;
+    border-radius: 5px;
+    outline: none;
+    width: calc(170px + 5vw);
+   }
+   .pagination{
+    background: #888888;
+    border-radius: 5px;
+    margin: 10px;
+    margin-bottom: 20px;
+   }
    .table-header{
     font-weight: bolder;
     display: flex;
     color: white;
-    width: 70vw;
+    width: 90vw;
+    max-width: 1000px;
     justify-content: space-between;
     padding: 10px;
     box-shadow: 0px 0px 12px #18191b;
@@ -19,7 +38,7 @@
     margin-top:20px;
     margin-bottom:25px;
 }
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 880px) {
     .none-res{
     display: none;
 }
