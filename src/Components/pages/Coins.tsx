@@ -3,10 +3,13 @@ import "../../styles/Coins.scss";
 import { fetchCoins } from "../../redux/action";
 import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
+import { TextField } from "@mui/material";
+
 import Pagination from "@mui/material/Pagination";
 import Coin from "../Coin";
 import LoadingSpinner from "../layout/LoadingSpinner";
 import SearchRoundedIcon from '@mui/icons-material/SearchRounded';
+
 const Coins: FC = () => {
   const [page, setPage] = useState(1);
   const [query, setQuery] = useState("");
@@ -36,9 +39,11 @@ const Coins: FC = () => {
   return (
     <div className="coins-container">
       <div className="input-container">
-        <input value={query} onChange={(e) => {
+        <TextField id="standard-basic" label="search a coin ..." variant="standard" value={query} onChange={(e) => {
           setQuery(e.target.value)
-        }} type="text" placeholder="search a coin ..." />{" "}
+          
+        }}
+        color="primary" type="text" placeholder="search a coin ..." />{" "}
         <SearchRoundedIcon/>
       </div>
 
@@ -59,7 +64,7 @@ const Coins: FC = () => {
         <>
           {coins.filter((e) =>
           query == '' ? true : 
-           query.toUpperCase().includes(e.symbol.toUpperCase())
+          e.symbol.toUpperCase().includes(query.toUpperCase())
            ).map((coin, i) => {
             return (
               <>

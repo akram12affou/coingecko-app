@@ -15,20 +15,23 @@ const Coin: FC<{ coin: []; i: number }> = ({ coin, i }) => {
     current_price,
     sparkline_in_7d
   } = coin;
+  const console = (e)=> {
+  navigate(`/`)
+  }
   return (
-    <div key={id} className='coin-container' onClick={() => navigate(`/coinDetails/${id}`)}>
-      <div onClick={() => console.log('y')}> <LoginModal/></div>
-      <div className="logo-name" >
+    <div key={id} className='coin-container'>
+      <div > <LoginModal/></div>
+      <div className="logo-name" onClick={() => navigate(`/coinDetails/${id}`)} >
         <img src={image} alt="" />
         <span>{symbol.toUpperCase()}</span>
       </div>
-      <div>
+      <div  onClick={() => navigate(`/coinDetails/${id}`)}>
         <span>${current_price}</span>
       </div>
       
-      <div className='none-res' >${total_volume}</div>
-      <div className='none-res' >${market_cap}</div>
-      <div className='chart-container' > 
+      <div className='none-res'  onClick={() => navigate(`/coinDetails/${id}`)}>${total_volume}</div>
+      <div className='none-res'  onClick={() => navigate(`/coinDetails/${id}`)}>${market_cap}</div>
+      <div className='chart-container'   onClick={() => navigate(`/coinDetails/${id}`)}> 
         <ChartLine spark={sparkline_in_7d.price} /> 
       </div>
     </div>
