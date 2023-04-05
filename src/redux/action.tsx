@@ -14,3 +14,19 @@ export const fetchCoinDetails = (data: []) => {
         }
     )
 }
+export const setUserInfo = (user: []) => {
+    return(
+        {
+            type : 'SetUserInfo',
+            payload : user
+        }
+    )
+}
+export const setFavoriteCoins = (coins: []) => {
+    return(
+        {
+            type : 'SetFavoriteCoins',
+            payload : coins
+        }
+    )
+}

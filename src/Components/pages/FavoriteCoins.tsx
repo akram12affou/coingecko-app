@@ -1,8 +1,17 @@
 import React from 'react'
+import { useSelector } from 'react-redux'
 
 function FavoriteCoins() {
+  const favoriteCoins = useSelector(state => state.favoriteCoins)
   return (
-    <div>FavoriteCoins</div>
+    <div>{favoriteCoins.map((e) => {
+      return(
+        <>
+        {JSON.stringify(e)}
+        </>
+      )
+    })
+      }</div>
   )
 }
 

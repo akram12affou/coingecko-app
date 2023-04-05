@@ -20,7 +20,7 @@ const Coin: FC<{ coin: []; i: number }> = ({ coin, i }) => {
   }
   return (
     <div key={id} className='coin-container'>
-      <div > <LoginModal/></div>
+      <div > <LoginModal coin={coin} /></div>
       <div className="logo-name" onClick={() => navigate(`/coinDetails/${id}`)} >
         <img src={image} alt="" />
         <span>{symbol.toUpperCase()}</span>

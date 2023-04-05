@@ -1,7 +1,12 @@
-import {FC} from 'react'
-import '../../styles/Header.scss'
-import {useNavigate} from 'react-router-dom'
+import {FC} from 'react';
+import '../../styles/Header.scss';
+import {useNavigate} from 'react-router-dom';
+import AccountCircleRoundedIcon from '@mui/icons-material/AccountCircleRounded';
+import HomeRoundedIcon from '@mui/icons-material/HomeRounded';
+import BookmarksRoundedIcon from '@mui/icons-material/BookmarksRounded';
+import { useSelector } from 'react-redux';
 const Header : FC = () => {
+  const user = useSelector(state => state.userInfo)
   const navigate = useNavigate()
   return (
     <header>
@@ -12,8 +17,9 @@ const Header : FC = () => {
       </h2>
       </div>
       <div className='buttons'>
-        <button onClick={() => navigate('/')}>Coins</button>
-        <button onClick={() => navigate('/favoritecoins')} >Favorites</button>
+        <span className='user-container'> <AccountCircleRoundedIcon/> {user?.displayName}</span>
+        <button onClick={() => navigate('/')}><HomeRoundedIcon/></button>
+        <button onClick={() => navigate('/favoritecoins')} ><BookmarksRoundedIcon/></button>
       </div>
       </div>
     </header>
