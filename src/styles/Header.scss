@@ -14,17 +14,20 @@ header{
         display: flex;
         align-items: center;
     }
+  
     .buttons{
         display: flex;
         justify-content: center;
         gap: 10px;
+        align-items: center;
     }
     background: #26272b;
     color: #f4f4f4;
     display: flex;
     justify-content: center;
     .header{
-        width: 70vw;
+        width: 90vw;
+        max-width: 1000px;
         height: 50px;
         display: flex;
         justify-content: space-between;
@@ -49,4 +52,42 @@ header{
         font-size:1.1rem;
         font-weight:600;
     }
+    .container-username{
+        display: flex;
+        gap: 10px;
+        align-items: center;
+    }
+    @media only screen and (max-width: 600px) {
+   
+        .header{
+            width: 90vw;
+            max-width: 1000px;
+            height: 50px;
+            
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+      }
+}
+.modal-container{
+    display: flex;
+    flex-direction: column;
+    
+    button{
+        background: #26272b;
+        padding: 5px;
+        font-weight: bolder;
+        border-radius: 5px;
+        letter-spacing: 1px;
+        width: 80%;
+        margin: 0 auto;
+        color: white;
+        margin-top: 15px;
+        cursor: pointer;
+    }
+    span{
+        margin: 0 auto;
+    }
+    
 }

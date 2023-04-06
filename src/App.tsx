@@ -18,7 +18,7 @@ function App() {
     onAuthStateChanged(auth , CurrentUser => {  
       dispatch(setUserInfo(CurrentUser))
     })
-    const q = query(coins_db,where('user','==', user.email));   
+    const q = query(coins_db,where('user','==', user?.email || ''));   
     const unsuscribe = onSnapshot(q, (snapshot) => {
     let fav :[] = [] ;
     snapshot.forEach((doc) => {
@@ -28,7 +28,7 @@ function App() {
     return () => unsuscribe();
   })
 },[user?.email])
-
+ console.log(auth.currentUser)
   return (
     <>
      <Header />

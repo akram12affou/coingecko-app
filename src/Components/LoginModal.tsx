@@ -6,6 +6,7 @@ import {
   updateProfile,
   signInWithEmailAndPassword,
 } from "firebase/auth";
+import { useNavigate } from "react-router-dom";
 import { auth , db } from "../firebase/firebase-con";
 import {
   addDoc,
@@ -39,13 +40,23 @@ export default function LoginModal({coin}) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const coins_db = collection(db, "coins");
+  const navigate = useNavigate()
+  const toTheHome = () => {
+    navigate('/');
+  }
   const user = useSelector((state) => state.userInfo);
-  const handleOpen = async  () => {
-    if(auth){
-      await addDoc(coins_db, {
-        coin,
-        user: user.email
-      });
+  const favoriteCoins = useSelector((state) => state.favoriteCoins);
+  const handleOpen = async  (id) => {
+    if(auth.currentUser){
+      if(exiteOrNot(id)){
+       let  idfb = FindTheId(id)
+        await deleteDoc(doc(db, "coins",idfb));
+      }else{
+        await addDoc(coins_db, {
+          coin,
+          user: user.email
+        });
+      }
       return;
     }
     setOpen(true)
@@ -60,9 +71,11 @@ export default function LoginModal({coin}) {
         setEmail("");
         setPassword("");
         setName("");
+        toTheHome()
         handleClose();
+        
       } catch (err) {
-        window.alert(err.message);
+        window.alert(err?.message);
       }
     } else {
       try {
@@ -73,19 +86,36 @@ export default function LoginModal({coin}) {
         setEmail("");
         setPassword("");
         setName("");
+        toTheHome()
         handleClose();
+        
       } catch (err) {
-        window.alert(err.message);
+        window.alert(err?.message);
       }
     }
   };
-  const exiteOrNot = () => {
-    
+  const FindTheId = (id) => {
+  let idfb = '';
+  favoriteCoins.map((e) => {
+    if(e.coin.id == id){
+      idfb=e.id
+    }
+  })
+  return idfb
+} 
+  const exiteOrNot = (id) => {
+    let exist = false;
+    favoriteCoins.map((e) => {
+      if(e.coin.id == id){
+        exist=true
+      }
+    })
+    return exist
   } 
   return (
     <div>
-      <Button onClick={handleOpen}>
-        <StarBorderRoundedIcon />
+      <Button onClick={() => handleOpen(coin.id)}>
+      {!exiteOrNot(coin.id) ? <StarBorderRoundedIcon />: <StarRoundedIcon/>}
       </Button>
       <Modal
         open={open}

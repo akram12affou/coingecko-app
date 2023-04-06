@@ -16,20 +16,21 @@ function ChartLine({spark}) {
       borderDashOffset: false,
    
     }],
-    options: {
-      scales: {
-          y: {
-            beginAtZero : true,
-              ticks: {
-                  display: false
-              }
-          }
-      }
-  }
+
   };
+  const options = {
+    scales: {
+        x: {
+            display: false // hide x-axis name
+        },
+        y: {
+            display: false // show y-axis name
+        }
+    }
+};
   return (
     <>
-    <Chart  type='line' data={data} />
+    <Chart  type='line' data={data} options={options}/>
     </>
   )
 }

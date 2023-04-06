@@ -9,13 +9,14 @@ import Pagination from "@mui/material/Pagination";
 import Coin from "../Coin";
 import LoadingSpinner from "../layout/LoadingSpinner";
 import SearchRoundedIcon from '@mui/icons-material/SearchRounded';
+import TableHeader from "../layout/TableHeader";
 
 const Coins: FC = () => {
-  const [page, setPage] = useState(1);
-  const [query, setQuery] = useState("");
-  const [loading, setLoading] = useState(false);
+  const [page, setPage] = useState<number>(1);
+  const [query, setQuery] = useState<string>("");
+  const [loading, setLoading] = useState<boolean>(false);
   const dispatch = useDispatch();
-  const coins = useSelector((state) => state.coins);
+  const coins : [] = useSelector((state) => state.coins);
   useEffect(() => {
     setLoading(true);
     axios
@@ -46,15 +47,7 @@ const Coins: FC = () => {
         color="primary" type="text" placeholder="search a coin ..." />{" "}
         <SearchRoundedIcon/>
       </div>
-
-      <div className="table-header">
-        <div>#</div>
-        <div>Coin</div>
-        <div>Price</div>
-        <div className="none-res">Volume</div>
-        <div className="none-res">Mkt Cap</div>
-        <div>Chart</div>
-      </div>
+       <TableHeader/>
       {loading ? (
         <div className="loading-spiner-container">
           {" "}
