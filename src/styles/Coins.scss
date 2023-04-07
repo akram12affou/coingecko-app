@@ -13,10 +13,13 @@
     color: aliceblue;
     gap: 5px;
   }
+  label{
+    color: white;
+  }
    input{
     padding: 5px;
     color: aliceblue;
-    border-bottom: 2px solid white;
+
     border-radius: 5px;
     outline: none;
     width: calc(170px + 5vw);

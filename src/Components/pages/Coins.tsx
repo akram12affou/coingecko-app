@@ -11,7 +11,7 @@ import LoadingSpinner from "../layout/LoadingSpinner";
 import SearchRoundedIcon from '@mui/icons-material/SearchRounded';
 import TableHeader from "../layout/TableHeader";
 
-const Coins: FC = () => {
+const Coins: FC = ({open ,setOpen}) => {
   const [page, setPage] = useState<number>(1);
   const [query, setQuery] = useState<string>("");
   const [loading, setLoading] = useState<boolean>(false);
@@ -21,7 +21,7 @@ const Coins: FC = () => {
     setLoading(true);
     axios
       .get(
-        `https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=15&page=${page}&sparkline=true`
+        `https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=50&page=${page}&sparkline=true`
       )
       .then((res) => {
         dispatch(fetchCoins(res.data));
@@ -32,8 +32,7 @@ const Coins: FC = () => {
   }, [page]);
   const handleChange = (event, value) => {
     setPage(value);
-    document
-      .querySelector(".brandname")
+    document.querySelector(".brandname")
       .scrollIntoView({ behavior: "smooth", block: "end" });
   };
 
@@ -61,7 +60,7 @@ const Coins: FC = () => {
            ).map((coin, i) => {
             return (
               <>
-                <Coin coin={coin} i={i} />
+                <Coin setOpen={setOpen} open={open}coin={coin} i={i} />
               </>
             );
           })}

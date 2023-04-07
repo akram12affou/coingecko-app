@@ -20,7 +20,7 @@ import CloseIcon from "@mui/icons-material/Close";
 import StarRoundedIcon from "@mui/icons-material/StarRounded";
 import StarBorderRoundedIcon from "@mui/icons-material/StarBorderRounded";
 import "../styles/LoginModal.scss";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 const style = {
   position: "absolute" as "absolute",
   top: "50%",
@@ -33,20 +33,21 @@ const style = {
   p: 4,
 };
 
-export default function LoginModal({coin}) {
-  const [open, setOpen] = useState(false);
-  const [register, setRegister] = useState(true);
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+export default function LoginModal({coin }) {
+  const [register, setRegister] = useState<boolean>(true);
+  const [name, setName] = useState<string>("");
+  const [email, setEmail] = useState<string>("");
+  const [open,setOpen] = useState(false);
+  const [password, setPassword] = useState<string>("");
   const coins_db = collection(db, "coins");
   const navigate = useNavigate()
   const toTheHome = () => {
     navigate('/');
   }
+ 
   const user = useSelector((state) => state.userInfo);
   const favoriteCoins = useSelector((state) => state.favoriteCoins);
-  const handleOpen = async  (id) => {
+  const handleOpen = async  (id: any) => {
     if(auth.currentUser){
       if(exiteOrNot(id)){
        let  idfb = FindTheId(id)
@@ -59,9 +60,11 @@ export default function LoginModal({coin}) {
       }
       return;
     }
+
     setOpen(true)
   };
   const handleClose = () => {
+  
     setOpen(false)
   };
   const register_acc = async () => {
@@ -94,18 +97,18 @@ export default function LoginModal({coin}) {
       }
     }
   };
-  const FindTheId = (id) => {
+  const FindTheId = (id: any) => {
   let idfb = '';
-  favoriteCoins.map((e) => {
+  favoriteCoins.map((e: { coin: { id: any; }; id: string; }) => {
     if(e.coin.id == id){
       idfb=e.id
     }
   })
   return idfb
 } 
-  const exiteOrNot = (id) => {
+  const exiteOrNot = (id: any) => {
     let exist = false;
-    favoriteCoins.map((e) => {
+    favoriteCoins.map((e: { coin: { id: any; }; }) => {
       if(e.coin.id == id){
         exist=true
       }
@@ -132,11 +135,12 @@ export default function LoginModal({coin}) {
             {register && (
               <div className="input-label">
                 <TextField
-              
                   label="name"
                   value={name}
                   onChange={(e) => {
-                    setName(e.target.value);
+                    e.target.value.length !== 10 ?
+                    setName(e.target.value)
+                    : null
                   }}
                   variant="standard"
                   color="primary"
@@ -144,7 +148,9 @@ export default function LoginModal({coin}) {
                   placeholder="enter your name"
                 />
               </div>
+            
             )}
+              
             <div className="input-label">
               <TextField
                 
@@ -161,7 +167,6 @@ export default function LoginModal({coin}) {
             </div>
             <div className="input-label">
               <TextField
-                
                 label="password"
                 value={password}
                 onChange={(e) => {

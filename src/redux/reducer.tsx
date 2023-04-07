@@ -2,7 +2,8 @@ const thestate = {
     coins : [],
     coinDetails : [],
     userInfo : [],
-    favoriteCoins : []
+    favoriteCoins : [],
+    open : false
 }
 
 export default (state = thestate, { type, payload }) => {
@@ -16,6 +17,7 @@ export default (state = thestate, { type, payload }) => {
   return { ...state, userInfo:payload }
   case 'SetFavoriteCoins':
   return { ...state, favoriteCoins:payload }
+ 
   default:
     return state
   }

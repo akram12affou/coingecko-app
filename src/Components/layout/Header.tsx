@@ -4,6 +4,7 @@ import * as React from 'react';
 import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
 import CloseIcon from "@mui/icons-material/Close";
+import LoginIcon from '@mui/icons-material/Login';
  import {  auth } from "../../firebase/firebase-con";
 import {useNavigate} from 'react-router-dom';
 import LogoutIcon from '@mui/icons-material/Logout';
@@ -12,6 +13,7 @@ import HomeRoundedIcon from '@mui/icons-material/HomeRounded';
 import BookmarksRoundedIcon from '@mui/icons-material/BookmarksRounded';
 import { useSelector } from 'react-redux';
 import { signOut } from 'firebase/auth';
+import LoginModal from '../LoginModal';
 const Header : FC = () => {
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
@@ -44,7 +46,6 @@ const Header : FC = () => {
       </div>
       <div className='buttons'>
         <button onClick={() => navigate('/')}><HomeRoundedIcon/></button>
-       
         {user?.displayName && 
         <div className='container-username'>    
         <button onClick={() => navigate('/favoritecoins')} ><BookmarksRoundedIcon/></button>
@@ -52,7 +53,7 @@ const Header : FC = () => {
         <button  onClick={handleOpen}><LogoutIcon/></button>
         </div>
         }
-
+        
       </div>
       </div>
       <Modal
@@ -70,6 +71,7 @@ const Header : FC = () => {
           </div>
           
         </Box>
+      
       </Modal>
     </header>
   )

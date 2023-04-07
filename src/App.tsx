@@ -10,9 +10,9 @@ import {  Routes , Route } from 'react-router-dom'
 import FavoriteCoins from './Components/pages/FavoriteCoins'
 import { onAuthStateChanged } from 'firebase/auth'
 function App() {
+  const [open, setOpen] = useState(false)
   const dispatch = useDispatch()
   const user = useSelector((state) => state.userInfo);
-
   useEffect(() => {
     const coins_db = collection(db, "coins");
     onAuthStateChanged(auth , CurrentUser => {  
@@ -28,12 +28,11 @@ function App() {
     return () => unsuscribe();
   })
 },[user?.email])
- console.log(auth.currentUser)
   return (
     <>
-     <Header />
+     <Header  open={open} setOpen={setOpen}/>
      <Routes>
-      <Route path='/' element={<Coins/>}></Route>
+      <Route path='/' element={<Coins open={open} setOpen={setOpen}/>}></Route>
       <Route path='/coinDetails/:id' element={<CoinDetails/>}></Route>
       <Route path='/favoritecoins' element={<FavoriteCoins/>}></Route>
      </Routes>

@@ -28,14 +28,22 @@
     box-shadow: 0px 0px 12px #18191b;
     border-radius: 5px;
     transition: .2s all ease;
-    cursor: pointer;
+    
  div{
   font-size: calc(0.7rem + 0.2vw);
   color: white;
+  cursor: pointer;
+  & span:hover{
+    text-decoration: underline;
+  }
+  
  }
 
     .chart-container{
-        // width: 200px;
+      display: flex;
+      align-items: center;
+        width: 40%;
+        max-width: 200px;
         height: 100px;
     }
     .logo-name{

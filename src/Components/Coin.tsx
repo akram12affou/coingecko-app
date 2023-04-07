@@ -26,15 +26,15 @@ const Coin: FC<{ coin:any; i: number }> = ({ coin, i }) => {
   }= coin;
   return (
     <div key={id} className='coin-container'>
-      <div > <LoginModal coin={coin} /></div>
+      <div > <LoginModal coin={coin}  /></div>
+    
       <div className="logo-name" onClick={() => navigate(`/coinDetails/${id}`)} >
         <img src={image} alt="" />
         <span>{symbol.toUpperCase()}</span>
       </div>
       <div  onClick={() => navigate(`/coinDetails/${id}`)}>
-        <span>${current_price}</span>
+        <main>${current_price}</main>
       </div>
-      
       <div className='none-res'  onClick={() => navigate(`/coinDetails/${id}`)}>${total_volume}</div>
       <div className='none-res'  onClick={() => navigate(`/coinDetails/${id}`)}>${market_cap}</div>
       <div className='chart-container'   onClick={() => navigate(`/coinDetails/${id}`)}> 

@@ -18,8 +18,14 @@ header{
     .buttons{
         display: flex;
         justify-content: center;
+        
         gap: 10px;
         align-items: center;
+        button{
+            display: flex;
+            gap: 5px;
+            align-items: center;
+        }
     }
     background: #26272b;
     color: #f4f4f4;
@@ -75,6 +81,7 @@ header{
     flex-direction: column;
     
     button{
+        
         background: #26272b;
         padding: 5px;
         font-weight: bolder;
