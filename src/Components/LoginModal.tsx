@@ -50,7 +50,7 @@ const LoginModal: FC<any | never> = ({coin}) => {
   const user = useSelector((state : any) => state.userInfo);
   const favoriteCoins = useSelector((state : any) => state.favoriteCoins);
   const handleOpen = async  (id: any) => {
-    if(auth.currentUser){
+    if(auth?.currentUser){
       if(exiteOrNot(id)){
        let  idfb = FindTheId(id)
         await deleteDoc(doc(db, "coins",idfb));
