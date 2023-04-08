@@ -46,7 +46,7 @@ const LoginModal: FC<any | never> = ({coin}) => {
   const toTheHome = () => {
     navigate('/');
   }
-  let auth: Auth["currentUser"]| any;
+  // let auth: any;
   const user = useSelector((state : any) => state.userInfo);
   const favoriteCoins = useSelector((state : any) => state.favoriteCoins);
   const handleOpen = async  (id: any) => {
@@ -84,6 +84,8 @@ const LoginModal: FC<any | never> = ({coin}) => {
       }
     } else {
       try {
+      
+        
         await createUserWithEmailAndPassword(auth, email, password);
         await updateProfile(auth.currentUser , { displayName: name }).catch(
           (err) => console.log(err)
