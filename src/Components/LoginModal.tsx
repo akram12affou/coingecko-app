@@ -1,10 +1,12 @@
 import { useState } from "react";
+import {FC} from 'react'
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import {
   createUserWithEmailAndPassword,
   updateProfile,
   signInWithEmailAndPassword,
+  Auth,
 } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 import { auth , db } from "../firebase/firebase-con";
@@ -20,7 +22,7 @@ import CloseIcon from "@mui/icons-material/Close";
 import StarRoundedIcon from "@mui/icons-material/StarRounded";
 import StarBorderRoundedIcon from "@mui/icons-material/StarBorderRounded";
 import "../styles/LoginModal.scss";
-import { useDispatch, useSelector } from "react-redux";
+import {  useSelector } from "react-redux";
 const style = {
   position: "absolute" as "absolute",
   top: "50%",
@@ -33,7 +35,7 @@ const style = {
   p: 4,
 };
 
-export default function LoginModal({coin }) {
+const LoginModal: FC<any | never> = ({coin}) => {
   const [register, setRegister] = useState<boolean>(true);
   const [name, setName] = useState<string>("");
   const [email, setEmail] = useState<string>("");
@@ -44,9 +46,9 @@ export default function LoginModal({coin }) {
   const toTheHome = () => {
     navigate('/');
   }
- 
-  const user = useSelector((state) => state.userInfo);
-  const favoriteCoins = useSelector((state) => state.favoriteCoins);
+  let auth: Auth["currentUser"]| any;
+  const user = useSelector((state : any) => state.userInfo);
+  const favoriteCoins = useSelector((state : any) => state.favoriteCoins);
   const handleOpen = async  (id: any) => {
     if(auth.currentUser){
       if(exiteOrNot(id)){
@@ -77,13 +79,13 @@ export default function LoginModal({coin }) {
         toTheHome()
         handleClose();
         
-      } catch (err) {
+      } catch (err : any) {
         window.alert(err?.message);
       }
     } else {
       try {
         await createUserWithEmailAndPassword(auth, email, password);
-        await updateProfile(auth.currentUser, { displayName: name }).catch(
+        await updateProfile(auth.currentUser , { displayName: name }).catch(
           (err) => console.log(err)
         );
         setEmail("");
@@ -92,7 +94,7 @@ export default function LoginModal({coin }) {
         toTheHome()
         handleClose();
         
-      } catch (err) {
+      } catch (err :any) {
         window.alert(err?.message);
       }
     }
@@ -206,3 +208,4 @@ export default function LoginModal({coin }) {
     </div>
   );
 }
+export default LoginModal

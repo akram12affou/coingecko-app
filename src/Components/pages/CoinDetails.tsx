@@ -10,7 +10,7 @@ const CoinDetails: FC = () => {
   const [loading, setLoading] = useState<boolean>(true);
   const { id } = useParams();
   const dispatch = useDispatch();
-  const coinDetails = useSelector((state) => state.coinDetails);
+  const coinDetails = useSelector((state :any) => state.coinDetails);
   useEffect(() => {
     setLoading(true);
     axios.get(`https://api.coingecko.com/api/v3/coins/${id}`)
@@ -25,10 +25,10 @@ const CoinDetails: FC = () => {
     description,
   }: {
     name : string,
-    image : object,
+    image : any,
     market_cap_rank : number,
-    market_data : object,
-    description : object
+    market_data : any,
+    description : any
   } = coinDetails;
 
   return (
@@ -64,7 +64,7 @@ const CoinDetails: FC = () => {
                 <div>1yr</div>
               </div>
               <div className="variation-container-values">
-                <div style={{'color': market_data?.price_change_percentage_1h_in_currency?.usd <0 ? 'red' : 'green'}}>
+                <div style={{'color': market_data?.price_change_percentage_1h_in_currency?.usd <0 ? 'red' : 'lightgreen'}}>
                   {market_data?.price_change_percentage_1h_in_currency?.usd.toFixed(
                     1
                   )}
@@ -144,7 +144,9 @@ const CoinDetails: FC = () => {
             )}
           </>
         )}
+        <br />
       </div>
+      
     </div>
   );
 };

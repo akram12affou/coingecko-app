@@ -3,16 +3,16 @@ import Coin from '../Coin'
 import TableHeader from '../layout/TableHeader'
 import '../../styles/FavoriteCoins.scss'
 function FavoriteCoins() {
-  const favoriteCoins = useSelector(state => state.favoriteCoins)
+  const favoriteCoins = useSelector((state : any) => state.favoriteCoins)
   return (
     <div className='favorite-coins-container'>
       <div className='table-header-container'>
         <TableHeader/>
       </div>
       <div className='coins-container'>
-        {favoriteCoins.map((coin) => {
+        {favoriteCoins.map((coin : any) => {
       return(
-        <Coin coin={coin.coin}/>
+        <Coin coin={coin.coin} i={0}/>
       )
     })
       }

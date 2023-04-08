@@ -1,16 +1,17 @@
-import React from 'react'
+import {FC} from 'react'
 import { Chart }  from 'react-chartjs-2'
 import 'chart.js/auto';
-function ChartLine({spark}) {
-  let arr:[]=[]
+const  ChartLine : FC<any | never> = ({spark}) =>  {
+  let arr:(number)[]=[]
+
   let sparkToshow = () => {
     for(let i=0; spark.length >i ; i=i+13){
         arr.push(spark[i])
     }
   }
   sparkToshow();
- console.log(arr[arr.length-1] , arr[0] )
-  const data = {
+
+  const data : any = {
     type: 'line',
     labels:Array(arr.length).fill(' '),
     datasets: [{
@@ -18,7 +19,7 @@ function ChartLine({spark}) {
       label: '7 days',
       data:  arr,
       fill: false,
-      borderColor: arr[arr.length-1] > arr[0]  ? '#05ff00' : '#ff0000',
+      borderColor: arr[arr.length-1] > arr[0]   ? '#05ff00' : '#ff0000',
       tension: 0,
       borderDashOffset: false,
       borderWidth: 2,

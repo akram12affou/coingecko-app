@@ -28,7 +28,9 @@
     box-shadow: 0px 0px 12px #18191b;
     border-radius: 5px;
     transition: .2s all ease;
-    
+    .login-modal{
+      width: 50px;
+    }
  div{
   font-size: calc(0.7rem + 0.2vw);
   color: white;

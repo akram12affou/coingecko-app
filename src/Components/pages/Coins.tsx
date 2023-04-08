@@ -11,12 +11,12 @@ import LoadingSpinner from "../layout/LoadingSpinner";
 import SearchRoundedIcon from '@mui/icons-material/SearchRounded';
 import TableHeader from "../layout/TableHeader";
 
-const Coins: FC = ({open ,setOpen}) => {
+const Coins: FC = () => {
   const [page, setPage] = useState<number>(1);
   const [query, setQuery] = useState<string>("");
   const [loading, setLoading] = useState<boolean>(false);
   const dispatch = useDispatch();
-  const coins : [] = useSelector((state) => state.coins);
+  const coins : [] = useSelector((state : any) => state.coins);
   useEffect(() => {
     setLoading(true);
     axios
@@ -30,10 +30,10 @@ const Coins: FC = ({open ,setOpen}) => {
         setLoading(false);
       });
   }, [page]);
-  const handleChange = (event, value) => {
+  const handleChange = (event:any, value:number) => {
     setPage(value);
-    document.querySelector(".brandname")
-      .scrollIntoView({ behavior: "smooth", block: "end" });
+    let element :any  = document.querySelector(".brandname")
+    element.scrollIntoView({ behavior: "smooth", block: "end" });
   };
 
   return (
@@ -54,13 +54,13 @@ const Coins: FC = ({open ,setOpen}) => {
         </div>
       ) : (
         <>
-          {coins.filter((e) =>
+          {coins.filter((e :any) =>
           query == '' ? true : 
           e.symbol.toUpperCase().includes(query.toUpperCase())
            ).map((coin, i) => {
             return (
               <>
-                <Coin setOpen={setOpen} open={open}coin={coin} i={i} />
+                <Coin coin={coin} i={i} />
               </>
             );
           })}

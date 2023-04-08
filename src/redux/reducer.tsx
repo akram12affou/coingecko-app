@@ -6,7 +6,7 @@ const thestate = {
     open : false
 }
 
-export default (state = thestate, { type, payload }) => {
+export default (state = thestate, { type, payload } : any) => {
   switch (type) {
 
   case 'FetchCoins':

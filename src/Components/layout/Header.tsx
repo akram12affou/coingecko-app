@@ -4,7 +4,6 @@ import * as React from 'react';
 import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
 import CloseIcon from "@mui/icons-material/Close";
-import LoginIcon from '@mui/icons-material/Login';
  import {  auth } from "../../firebase/firebase-con";
 import {useNavigate} from 'react-router-dom';
 import LogoutIcon from '@mui/icons-material/Logout';
@@ -29,7 +28,7 @@ const Header : FC = () => {
     boxShadow: 24,
     p: 4,
   };
-  const user = useSelector(state => state.userInfo)
+  const user = useSelector((state : any) => state.userInfo)
   const navigate = useNavigate()
   const logOut  = async () => {
     await signOut(auth);

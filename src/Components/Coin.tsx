@@ -22,11 +22,11 @@ const Coin: FC<{ coin:any; i: number }> = ({ coin, i }) => {
     id:string,
     total_volume:number,
     current_price:string,
-    sparkline_in_7d:[]
+    sparkline_in_7d:any
   }= coin;
   return (
     <div key={id} className='coin-container'>
-      <div > <LoginModal coin={coin}  /></div>
+      <div className="login-modal" > <LoginModal coin={coin}  /></div>
     
       <div className="logo-name" onClick={() => navigate(`/coinDetails/${id}`)} >
         <img src={image} alt="" />
