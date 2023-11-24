@@ -1,12 +1,12 @@
 import { useState } from "react";
 import {FC} from 'react'
 import Box from "@mui/material/Box";
-import Button from "@mui/material/Button";
+import { CiStar } from "react-icons/ci";
+import { FaStar } from "react-icons/fa";
 import {
   createUserWithEmailAndPassword,
   updateProfile,
   signInWithEmailAndPassword,
-  Auth,
 } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 import { auth , db } from "../firebase/firebase-con";
@@ -19,8 +19,6 @@ import {
 import Modal from "@mui/material/Modal";
 import { TextField } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
-import StarRoundedIcon from "@mui/icons-material/StarRounded";
-import StarBorderRoundedIcon from "@mui/icons-material/StarBorderRounded";
 import "../styles/LoginModal.scss";
 import {  useSelector } from "react-redux";
 const style = {
@@ -46,15 +44,16 @@ const LoginModal: FC<any | never> = ({coin}) => {
   const toTheHome = () => {
     navigate('/');
   }
-  // let auth: Auth["currentUser"]| any;
+  
   const user = useSelector((state : any) => state.userInfo);
   const favoriteCoins = useSelector((state : any) => state.favoriteCoins);
   const handleOpen = async  (id: any) => {
     if(auth?.currentUser){
       if(exiteOrNot(id)){
-       let  idfb = FindTheId(id)
+       let  idfb = FindTheId(id);
         await deleteDoc(doc(db, "coins",idfb));
       }else{
+        console.log(coin)
         await addDoc(coins_db, {
           coin,
           user: user.email
@@ -62,8 +61,7 @@ const LoginModal: FC<any | never> = ({coin}) => {
       }
       return;
     }
-
-    setOpen(true)
+    setOpen(true);
   };
   const handleClose = () => {
   
@@ -84,8 +82,6 @@ const LoginModal: FC<any | never> = ({coin}) => {
       }
     } else {
       try {
-      
-        
         await createUserWithEmailAndPassword(auth , email, password);
         await updateProfile((auth?.currentUser) , { displayName: name }).catch(
           (err) => console.log(err)
@@ -95,7 +91,6 @@ const LoginModal: FC<any | never> = ({coin}) => {
         setName("");
         toTheHome()
         handleClose();
-        
       } catch (err :any) {
         window.alert(err?.message);
       }
@@ -121,9 +116,10 @@ const LoginModal: FC<any | never> = ({coin}) => {
   } 
   return (
     <div>
-      <Button onClick={() => handleOpen(coin.id)}>
-      {!exiteOrNot(coin.id) ? <StarBorderRoundedIcon />: <StarRoundedIcon/>}
-      </Button>
+      <button className="button-star" title="Add to your favorite list" onClick={() => handleOpen(coin.id)}>
+      {exiteOrNot(coin.id) ? <FaStar />: <CiStar/>}
+      </button>
+
       <Modal
         open={open}
         onClose={handleClose}
@@ -152,12 +148,10 @@ const LoginModal: FC<any | never> = ({coin}) => {
                   placeholder="enter your name"
                 />
               </div>
-            
             )}
               
             <div className="input-label">
               <TextField
-                
                 label="email"
                 value={email}
                 onChange={(e) => {

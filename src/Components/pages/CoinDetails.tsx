@@ -6,11 +6,13 @@ import DOMPurify from "dompurify";
 import { fetchCoinDetails } from "../../redux/action";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
+import LoginModal from "../LoginModal";
 const CoinDetails: FC = () => {
   const [loading, setLoading] = useState<boolean>(true);
   const { id } = useParams();
   const dispatch = useDispatch();
   const coinDetails = useSelector((state :any) => state.coinDetails);
+  const coins : [] = useSelector((state : any) => state.coins)
   useEffect(() => {
     setLoading(true);
     axios.get(`https://api.coingecko.com/api/v3/coins/${id}`)
@@ -30,7 +32,9 @@ const CoinDetails: FC = () => {
     market_data : any,
     description : any
   } = coinDetails;
-
+const coin = coins.filter((e) => {
+  return e?.id == id
+})
   return (
     <div>
       <div className="coin-details-container">
@@ -41,7 +45,8 @@ const CoinDetails: FC = () => {
           </div>
         ) : (
           <>
-            <div className="coin-name">{name}</div>
+          {/* <LoginModal coin={coin}/> */}
+          <div className="coin-name"><span>{name}</span> <span className="star-in-details"><LoginModal coin={coin[0]}/></span></div>
             <div className="coin-rank-price-container">
               <div className="rank">Rank # {market_cap_rank}</div>
               <div className="coin-rank-price">

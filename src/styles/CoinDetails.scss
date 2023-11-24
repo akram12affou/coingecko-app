@@ -11,8 +11,13 @@
         align-items: center;
     }
     .coin-name{
+        .star-in-details{
+            margin-top: 3px;
+        }
+        display: flex;
         margin-top: 15px;
-        flex-direction: column;
+        justify-content: space-evenly;
+        align-items: center;
         background-color: #26272b;
         box-shadow: 0px 0px 12px #18191b;
         width: 90vw;

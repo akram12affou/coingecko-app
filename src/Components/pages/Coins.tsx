@@ -4,7 +4,6 @@ import { fetchCoins } from "../../redux/action";
 import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
 import { TextField } from "@mui/material";
-
 import Pagination from "@mui/material/Pagination";
 import Coin from "../Coin";
 import LoadingSpinner from "../layout/LoadingSpinner";
@@ -60,6 +59,11 @@ const Coins: FC = () => {
            ).map((coin, i) => {
             return (
               <>
+              {
+                coins.filter((e :any) =>
+                query == '' ? true : 
+                e.symbol.toUpperCase().includes(query.toUpperCase())).length ==0 && 'ge'
+              }
                 <Coin coin={coin} i={i} />
               </>
             );

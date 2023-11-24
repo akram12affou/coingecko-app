@@ -1,7 +1,6 @@
 import { FC } from "react";
 import {useNavigate} from 'react-router-dom' 
 import '../styles/Coin.scss'
-
 import ChartLine from '../Components/LineChart'
 import LoginModal from "./LoginModal";
 const Coin: FC<{ coin:any; i: number }> = ({ coin, i }) => {
@@ -24,23 +23,31 @@ const Coin: FC<{ coin:any; i: number }> = ({ coin, i }) => {
     current_price:string,
     sparkline_in_7d:any
   }= coin;
+  const navigateToDetails = () => {
+    scrollTo(0, 0);
+    navigate(`/coinDetails/${id}`)
+  }
   return (
-    <div key={id} className='coin-container'>
-      <div className="login-modal" > <LoginModal coin={coin}  /></div>
+    <div className="flex coin-container"> 
+     <div className="login-modal"><LoginModal coin={coin}/></div>
+     <div key={id} className='coin-container-2' onClick={navigateToDetails}>
+      
     
-      <div className="logo-name" onClick={() => navigate(`/coinDetails/${id}`)} >
+      <div className="logo-name"  >
         <img src={image} alt="" />
         <span>{symbol.toUpperCase()}</span>
       </div>
-      <div  onClick={() => navigate(`/coinDetails/${id}`)}>
+      <div  >
         <main>${current_price}</main>
       </div>
-      <div className='none-res'  onClick={() => navigate(`/coinDetails/${id}`)}>${total_volume}</div>
-      <div className='none-res'  onClick={() => navigate(`/coinDetails/${id}`)}>${market_cap}</div>
-      <div className='chart-container'   onClick={() => navigate(`/coinDetails/${id}`)}> 
+      <div className='none-res'  >${total_volume}</div>
+      <div className='none-res'  >${market_cap}</div>
+      <div className='chart-container'   > 
         <ChartLine spark={sparkline_in_7d.price} /> 
       </div>
     </div>
+    </div>
+  
   );
 };
 
