@@ -44,12 +44,12 @@ const Header : FC = () => {
       </h2>
       </div>
       <div className='buttons'>
-        <button onClick={() => navigate('/')}><HomeRoundedIcon/></button>
+        <button onClick={() => navigate('/')} title='Home'><HomeRoundedIcon/></button>
         {user?.displayName && 
         <div className='container-username'>    
-        <button onClick={() => navigate('/favoritecoins')} ><BookmarksRoundedIcon/></button>
+        <button onClick={() => navigate('/favoritecoins')} title='Favorite Coins'><BookmarksRoundedIcon/></button>
         |<span className='user-container'>  <AccountCircleRoundedIcon/> {user?.displayName}</span>
-        <button  onClick={handleOpen}><LogoutIcon/></button>
+        <button  onClick={handleOpen} title='Logout'><LogoutIcon/></button>
         </div>
         }
         
