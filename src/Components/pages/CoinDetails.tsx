@@ -32,7 +32,7 @@ const CoinDetails: FC = () => {
     market_data : any,
     description : any
   } = coinDetails;
-const coin = coins.filter((e) => {
+const coin = coins.filter((e : any) => {
   return e?.id == id
 })
   return (
