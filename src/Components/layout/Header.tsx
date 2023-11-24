@@ -12,7 +12,6 @@ import HomeRoundedIcon from '@mui/icons-material/HomeRounded';
 import BookmarksRoundedIcon from '@mui/icons-material/BookmarksRounded';
 import { useSelector } from 'react-redux';
 import { signOut } from 'firebase/auth';
-import LoginModal from '../LoginModal';
 const Header : FC = () => {
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
@@ -52,7 +51,6 @@ const Header : FC = () => {
         <button  onClick={handleOpen} title='Logout'><LogoutIcon/></button>
         </div>
         }
-        
       </div>
       </div>
       <Modal
@@ -62,15 +60,12 @@ const Header : FC = () => {
         aria-describedby="modal-modal-description"
       >
         <Box sx={style}> 
-       
           <div className='modal-container'>
             <div className='close-button'><CloseIcon onClick={handleClose} /></div>
            <span> Are you sure you want to log out ?</span>
           <button  onClick={logOut}> Log Out</button> 
           </div>
-          
         </Box>
-      
       </Modal>
     </header>
   )

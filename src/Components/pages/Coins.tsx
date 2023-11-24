@@ -27,7 +27,9 @@ const Coins: FC = () => {
       })
       .then((res) => {
         setLoading(false);
-      });
+      }).catch(err => {
+        console.log(err)
+      })
   }, [page]);
   const handleChange = (event:any, value:number) => {
     setPage(value);
