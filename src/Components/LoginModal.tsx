@@ -172,7 +172,7 @@ const LoginModal: FC<any | never> = ({coin}) => {
                 }}
                 variant="standard"
                 color="primary"
-                type="text"
+                type="password"
                 placeholder="enter your password "
               />
             </div>
